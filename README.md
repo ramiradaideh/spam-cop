@@ -1,2 +1,2 @@
-# spam-cop
-Email Spam Detector
+# Titanic
+Disaster recovery tool for Kubernetes resources 
