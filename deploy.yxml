@@ -1,0 +1,36 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	"path/filepath"
+
+	"k8s.io/apimachinery/pkg/util/yaml"
+	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/tools/clientcmd"
+)
+
+func runDeploy() {
+	clientset := getClientset()
+	namespace := "default"
+
+	files, err := filepath.Glob("manifests/*.yaml")
+	if err != nil {
+		panic(err)
+	}
+
+	for _, file := range files {
+		data, err := os.ReadFile(file)
+		if err != nil {
+			panic(err)
+		}
+
+		obj := decodeKubernetesResource(data)
+		if err := applyResource(clientset, obj, namespace); err != nil {
+			fmt.Printf("Failed to apply resource from %s: %v\n", file, err)
+		}
+	}
+
+	fmt.Println("Deployment completed.")
+}
