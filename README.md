@@ -9,24 +9,11 @@ The **Pipeline Rollback Button** is a disaster recovery tool designed to simplif
 
 ---
 
-## Features
-- **Instant Rollback**: Revert Kubernetes deployments to their last stable state with a single click or command.
-- **Pipeline Recovery**: Rollback CI/CD pipelines to prior artifacts or container image versions.
-- **User-Friendly Interface**: Trigger rollbacks via CLI or a simple web-based UI (Streamlit).
-- **Local Testing Support**: Fully testable on a local Kubernetes cluster using `kind`.
-- **Optional Observability**: Integrate Prometheus and Grafana for real-time monitoring of deployments and rollbacks.
-
----
 
 ## Prerequisites
 - **Tools & Libraries**:
-  - [Kubernetes](https://kubernetes.io/) (with a local `kind` cluster)
   - [Helm](https://helm.sh/)
-  - [Python 3.x](https://www.python.org/)
-  - Python libraries:
-    - `kubernetes`
-    - `subprocess`
-    - Optional: `streamlit` (for UI)
+  - Go
 
 - **Knowledge Requirements**:
   - Basic understanding of Kubernetes, Helm, and Python.
